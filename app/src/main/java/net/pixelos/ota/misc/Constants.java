@@ -25,11 +25,11 @@ public final class Constants {
     public static final String PROP_RECOVERY_UPDATE = "persist.sys.recovery_update";
     public static final String PREF_CURRENT_PERSISTENT_STATUS = "current_persistent_status";
     public static final String PREF_INSTALLING_AB_ID = "installing_ab_id";
-    public static final String DOWNLOAD_PATH = "/sdcard/Download/system_updates/";
+    public static final String DOWNLOAD_PATH = "/data/system_updates/ota/";
     static final String PROP_AB_DEVICE = "ro.build.ab_update";
     static final String PROP_DEVICE = "ro.custom.device";
     static final String PROP_BUILD_VERSION = "net.pixelos.version";
-    static final String OTA_URL = "https://raw.githubusercontent.com/zhenggangzhao-org/official_devices/%s/API/devices/%s.json";
+    static final String OTA_URL = "https://raw.githubusercontent.com/zhenggangzhao-org/official_devices/%s/API/updater/%s.json";
     static final String MAINTAINER_URL = "https://github.com/%s";
     static final String DOWNLOAD_WEBPAGE_URL = "https://sourceforge.net/projects/pixelos-redwood/%s";
     static final String EXPORT_PATH = "PixelOS-Updates/";

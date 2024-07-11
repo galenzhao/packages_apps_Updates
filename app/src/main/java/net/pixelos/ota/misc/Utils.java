@@ -156,6 +156,7 @@ public class Utils {
     }
 
     public static String getServerURL() {
+        // return "https://192-168-31-119.local.zhenggangzhao.org/official_devices/API/updater/redwood.json";
         return String.format(Constants.OTA_URL, "fourteen", SystemProperties.get(Constants.PROP_DEVICE));
     }
 
