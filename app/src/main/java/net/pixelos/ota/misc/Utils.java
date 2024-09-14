@@ -165,7 +165,8 @@ public class Utils {
     }
 
     public static String getServerURL() {
-        return String.format(Constants.OTA_URL, SystemProperties.get(Constants.PROP_BUILD_VERSION), SystemProperties.get(Constants.PROP_DEVICE));
+        // return "https://192-168-31-119.local.zhenggangzhao.org/official_devices/API/updater/redwood.json";
+        return String.format(Constants.OTA_URL, "fourteen", SystemProperties.get(Constants.PROP_DEVICE));
     }
 
     public static String getMaintainerURL(String username) {
@@ -173,7 +174,7 @@ public class Utils {
     }
 
     public static String getDownloadWebpageUrl(String fileName) {
-        return String.format(Constants.DOWNLOAD_WEBPAGE_URL, SystemProperties.get(Constants.PROP_DEVICE));
+        return String.format(Constants.DOWNLOAD_WEBPAGE_URL, "files");
     }
 
     public static void triggerUpdate(Context context) {

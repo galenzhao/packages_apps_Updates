@@ -19,7 +19,7 @@ KEYSTORE_PATH="$4"
 
 if [ -f "$KEYSTORE_PATH" ]; then
     echo "$KEYSTORE_PATH already exists"
-    exit 1
+    #exit 1
 fi
 
 echo "The passwords will be stored in clear text"
