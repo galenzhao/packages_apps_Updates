@@ -43,5 +43,5 @@ public interface UpdateBaseInfo {
 
     String getHash();
 
-    int getMinTimestamp ();
+    long getMinTimestamp ();
 }

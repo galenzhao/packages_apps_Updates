@@ -106,6 +106,12 @@ public class Utils {
         update.setForumUrl(object.isNull("forum_url") ? "" : object.getString("forum_url"));
         update.setWebsiteUrl(object.isNull("website_url") ? "" : object.getString("website_url"));
         update.setNewsUrl(object.isNull("news_url") ? "" : object.getString("news_url"));
+        try {
+            update.setMinTimestamp (object.getLong("ota_datetime"));
+        } catch (JSONException e) {
+            update.setMinTimestamp (0);
+            Log.d(TAG, "Could not parse ota_datetime", e);
+        }
         return update;
     }
 
@@ -118,9 +124,12 @@ public class Utils {
             Log.d(TAG, update.getName() + " with timestamp " + update.getTimestamp() + " is older than/equal to the current build " + SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0));
             return false;
         }
-        if (update.getMinTimestamp() > SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0)) {
-            Log.d(TAG, "The minimum timestamp " + update.getMinTimestamp() + " is newer than the current build " + SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0) + " A CLEAN FLASH MAY BE REQUIRED ");
-            return false;
+        if (update.getMinTimestamp() != 0 ) { 
+            if ( update.getMinTimestamp() > SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0)) {
+                Log.d(TAG, "The minimum timestamp " + update.getMinTimestamp() + " is newer than the current build " + SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0));
+                Log.e(TAG, "CLEAN FLASH MAY BE REQUIRED");
+                return false;
+            }
         }
 
         return true;
