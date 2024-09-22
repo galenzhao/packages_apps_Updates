@@ -43,6 +43,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.ArrayList;
 
+import com.google.gson.*;
+
 public class ExtrasFragment extends Fragment {
 
     private View mainView;
@@ -324,9 +326,19 @@ public class ExtrasFragment extends Fragment {
         }
 
         if (update.getForumUrl() != null && !update.getForumUrl().isEmpty()) {
-            forumCard.setOnClickListener(v -> openUrl(update.getForumUrl()));
+        try {
+            JsonObject jsonObject = new Gson().fromJson(update.getForumUrl(), JsonObject.class);
+            forumCard.setOnClickListener(v -> openUrl(jsonObject.get("url")
+    .getAsString()));
             forumCard.setClickable(true);
             forumCard.setVisibility(View.VISIBLE);
+            // change title and text
+            forumCard.setTitle(jsonObject.get("title")
+    .getAsString());
+            forumCard.setSummary(jsonObject.get("summary")
+    .getAsString());
+        } catch (Exception e2) {
+        }
         }
 
         if (update.getWebsiteUrl() != null && !update.getWebsiteUrl().isEmpty()) {

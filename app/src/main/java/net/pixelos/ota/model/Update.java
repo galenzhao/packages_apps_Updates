@@ -30,7 +30,7 @@ public class Update extends UpdateBase implements UpdateInfo {
     private int mInstallProgress;
     private boolean mIsFinalizing;
     private String mHash;
-    private int mMinTimestamp;
+    private long mMinTimestamp;
 
     public Update() {
     }
@@ -70,11 +70,11 @@ public class Update extends UpdateBase implements UpdateInfo {
     }
 
     @Override
-    public int getMinTimestamp () {
+    public long getMinTimestamp () {
         return mMinTimestamp;
     }
 
-    public void setMinTimestamp (int Timestamp) {
+    public void setMinTimestamp (long Timestamp) {
         mMinTimestamp = Timestamp;
     }
 }
